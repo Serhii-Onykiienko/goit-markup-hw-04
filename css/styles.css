@@ -485,6 +485,7 @@ button {
 
 .footer__wrapper {
   display: flex;
+  align-items: baseline;
 }
 
 .footer__logo-wrapper {
@@ -519,8 +520,13 @@ button {
   margin-bottom: 16px;
 }
 
+.footer-list {
+  gap: 16px;
+}
+
 .footer-link {
   display: flex;
+
   padding: 8px;
   border-radius: 50%;
   background-color: #4d5ae5;
