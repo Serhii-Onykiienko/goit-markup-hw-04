@@ -62,6 +62,11 @@ button {
 /* #region Header */
 .header {
   border-bottom: 1px solid #e7e9fc;
+  box-shadow:
+    0 1px 6px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16),
+    0 2px 1px 0 rgba(46, 47, 66, 0.08);
+  background: #fff;
 }
 
 .header .container {
@@ -104,10 +109,27 @@ button {
   letter-spacing: 0.02em;
   color: #2e2f42;
   padding: 24px 0;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link.active {
+  position: relative;
+}
+.nav-link.active::after {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  content: "";
+  display: block;
+  border-radius: 2px;
+  width: 100%;
+  height: 4px;
+  background-color: #404bbf;
 }
 
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.nav-link.active {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -135,6 +157,7 @@ button {
   letter-spacing: 0.02em;
   color: #434455;
   padding: 24px 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-link:hover,
 .address-link:focus {
@@ -145,6 +168,14 @@ button {
 /* #region Section Hero */
 .hero {
   background-color: #2e2f42;
+
+  background-image:
+    linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+    url(../images/hero/people-office.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  max-width: 100%;
   padding: 188px 0;
   text-align: center;
 }
@@ -176,13 +207,15 @@ button {
   margin: 0 auto;
   border-radius: 4px;
   padding: 16px 32px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   /* width: 169px;
   height: 56px; */
 }
 
 .hero__button:hover,
 .hero__button:focus {
-  background: #404bbf;
+  background-color: #404bbf;
 }
 /* #endregion */
 
@@ -219,6 +252,20 @@ button {
   flex-basis: calc((100% - 24px * 3) / 4);
 }
 
+.features__item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8e8f99;
+  border-radius: 4px;
+  width: 264px;
+  height: 112px;
+  background-color: #f4f4fd;
+  margin-bottom: 8px;
+}
+
+.features__wrapper-svg {
+}
 .features__item-title {
   font-weight: 500;
   font-size: 20px;
@@ -299,8 +346,38 @@ button {
   letter-spacing: 0.02em;
   text-align: center;
   color: #434455;
+  margin-bottom: 8px;
 }
 
+.team__socials-list {
+  display: flex;
+  gap: 24px;
+}
+
+.team__socials-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #4d5ae5;
+  width: 40px;
+  height: 40px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team__socials-link {
+  display: flex;
+  padding: 12px;
+}
+.team__socials-icon {
+  fill: #f4f4fd;
+}
+
+.team__socials-item:hover,
+.team__socials-item:focus {
+  background-color: #404bbf;
+}
 /* #endregion */
 
 /* #region Section Portfolio */
@@ -311,7 +388,7 @@ button {
 .portfolio__title {
   font-weight: 700;
   font-size: 36px;
-  line-height: 1.11111;
+  line-height: 1.11;
   letter-spacing: 0.02em;
   text-align: center;
   color: #2e2f42;
@@ -328,6 +405,8 @@ button {
 .portfolio__item {
   background-color: #fff;
   flex-basis: calc((100% - 24px * 2) / 3);
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio__caption {
@@ -335,6 +414,33 @@ button {
   border-left: 1px solid #e7e9fc;
   border-right: 1px solid #e7e9fc;
   padding: 32px 16px;
+}
+
+.portfolio__wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+
+  color: #f4f4fd;
+  background-color: #4d5ae5;
+
+  transform: translateY(100%);
+  transition: transform 0.5s;
+}
+
+.portfolio__item:hover .overlay {
+  transform: translateY(0);
 }
 
 .portfolio__item-img {
@@ -355,6 +461,15 @@ button {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #434455;
+}
+
+.portfolio__item:hover,
+.portfolio__item:focus {
+  box-shadow:
+    0 2px 1px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16),
+    0 1px 6px 0 rgba(46, 47, 66, 0.08);
+  background-color: #fff;
 }
 
 /* #endregion */
@@ -387,4 +502,17 @@ button {
   width: 264px;
 }
 
+.footer__socials-media {
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.footer__wrapper {
+  display: flex;
+}
+.footer__logo-wrapper {
+  margin-right: 120px;
+}
+.footer__socials-wrapper {
+}
 /* #endregion */
